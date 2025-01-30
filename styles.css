@@ -62,3 +62,29 @@ header {
     font-weight: bold;
     color: #ffcc00;
 }
+/* Barra de progreso */
+#progressBar {
+    width: 300px;
+    appearance: none;
+    height: 5px;
+    background: #ffcc00;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Cambia el color cuando el usuario la mueve */
+#progressBar::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#currentTime, #duration {
+    font-size: 14px;
+    margin: 0 10px;
+    color: white;
+}
