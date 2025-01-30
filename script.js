@@ -1,22 +1,10 @@
-const audio = new Audio();
-audio.src = "beabadoobee the way things; 
-audio.preload = "auto"; // Precargar el archivo
+const audio = new Audio("the-way-things.mp3"); // Asegúrate de que el nombre del archivo es correcto
 
-// Comprobar si el audio se ha cargado correctamente
-audio.addEventListener("canplaythrough", () => {
-    console.log("🎶 La canción está lista para reproducirse.");
-});
-
-// Mostrar error si el archivo no se carga
-audio.addEventListener("error", (e) => {
-    console.error("❌ Error al cargar el audio:", e);
-});
-
-// Obtener elementos
 const playPauseBtn = document.getElementById("playPause");
 const progressBar = document.getElementById("progressBar");
 const currentTimeSpan = document.getElementById("currentTime");
 const durationSpan = document.getElementById("duration");
+const volumeBar = document.getElementById("volumeBar"); // Control de volumen
 
 // Formatear tiempo en minutos:segundos
 function formatTime(time) {
@@ -33,11 +21,7 @@ audio.addEventListener("loadedmetadata", () => {
 // Reproducir o pausar la canción
 playPauseBtn.addEventListener("click", () => {
     if (audio.paused) {
-        audio.play().then(() => {
-            console.log("▶️ Canción reproduciéndose.");
-        }).catch(error => {
-            console.error("❌ No se pudo reproducir la canción:", error);
-        });
+        audio.play();
         playPauseBtn.textContent = "⏸️"; // Cambia el icono a pausa
     } else {
         audio.pause();
@@ -55,3 +39,9 @@ audio.addEventListener("timeupdate", () => {
 progressBar.addEventListener("input", () => {
     audio.currentTime = (progressBar.value / 100) * audio.duration;
 });
+
+// Control de volumen
+volumeBar.addEventListener("input", () => {
+    audio.volume = volumeBar.value;
+});
+
