@@ -12,25 +12,18 @@
         <h1>🎵 Nuestro Museo del Amor 🎵</h1>
     </header>
 
-    <div class="music-player">
-    <button id="prev">⏮️</button>
-    <button id="playPause">▶️</button>
-    <button id="next">⏭️</button>
-
-    <!-- Barra de progreso -->
-    <input type="range" id="progressBar" value="0" min="0" max="100">
-    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-
-    <span id="songTitle">Canción 1</span>
-</div>
-
+    <!-- Reproductor de Spotify -->
+    <div class="spotify-player">
+        <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/playlist/0M6LvW3AdnY0VPlBuvJkB7?si=ea30bc63e60444d8&pt=b52f47cd313cd74d2a77941d10b614f2" 
+            width="100%" height="152" frameBorder="0" 
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture">
+        </iframe>
+    </div>
 
     <div id="lyrics-container">
         <p id="lyrics">Letra de la canción aparecerá aquí...</p>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script src="script.js"></script>
 
 </body>
 </html>
