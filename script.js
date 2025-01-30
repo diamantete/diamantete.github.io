@@ -1,4 +1,18 @@
-const audio = new Audio("beabadoobee the way things.mp3"); // Cargar la canción
+const audio = new Audio();
+audio.src = "beabadoobee the way things; 
+audio.preload = "auto"; // Precargar el archivo
+
+// Comprobar si el audio se ha cargado correctamente
+audio.addEventListener("canplaythrough", () => {
+    console.log("🎶 La canción está lista para reproducirse.");
+});
+
+// Mostrar error si el archivo no se carga
+audio.addEventListener("error", (e) => {
+    console.error("❌ Error al cargar el audio:", e);
+});
+
+// Obtener elementos
 const playPauseBtn = document.getElementById("playPause");
 const progressBar = document.getElementById("progressBar");
 const currentTimeSpan = document.getElementById("currentTime");
@@ -11,7 +25,7 @@ function formatTime(time) {
     return `${minutes}:${seconds}`;
 }
 
-// Actualizar la duración cuando se carga el audio
+// Actualizar duración cuando se carga el audio
 audio.addEventListener("loadedmetadata", () => {
     durationSpan.textContent = formatTime(audio.duration);
 });
@@ -19,7 +33,11 @@ audio.addEventListener("loadedmetadata", () => {
 // Reproducir o pausar la canción
 playPauseBtn.addEventListener("click", () => {
     if (audio.paused) {
-        audio.play();
+        audio.play().then(() => {
+            console.log("▶️ Canción reproduciéndose.");
+        }).catch(error => {
+            console.error("❌ No se pudo reproducir la canción:", error);
+        });
         playPauseBtn.textContent = "⏸️"; // Cambia el icono a pausa
     } else {
         audio.pause();
