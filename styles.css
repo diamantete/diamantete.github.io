@@ -95,3 +95,28 @@ body {
     font-size: 12px;
     margin-left: 10px;
 }
+/* Estilos del control de volumen */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.volume-control input {
+    width: 80px;
+    appearance: none;
+    height: 6px;
+    border-radius: 5px;
+    background: #ffcc00;
+    cursor: pointer;
+}
+
+.volume-control input::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
