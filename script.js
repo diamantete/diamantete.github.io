@@ -1,16 +1,13 @@
+// Definir la canción con su título y archivo MP3
 const songs = [
-    { title: "Canción 1", src: "song1.mp3" },
-    { title: "Canción 2", src: "song2.mp3" },
-    { title: "Canción 3", src: "song3.mp3" }
+    { title: "The Way Things - beabadoobee", src: "beabadoobee the way things.mp3" }
 ];
 
 let currentSongIndex = 0;
-let audio = new Audio(songs[currentSongIndex].src);
+let audio = new Audio(songs[currentSongIndex].src); // Cargar la canción
 
-// Elementos del DOM
+// Obtener elementos del DOM
 const playPauseBtn = document.getElementById("playPause");
-const prevBtn = document.getElementById("prev");
-const nextBtn = document.getElementById("next");
 const progressBar = document.getElementById("progressBar");
 const currentTimeSpan = document.getElementById("currentTime");
 const durationSpan = document.getElementById("duration");
@@ -38,45 +35,21 @@ audio.addEventListener("loadedmetadata", () => {
 playPauseBtn.addEventListener("click", () => {
     if (audio.paused) {
         audio.play();
-        playPauseBtn.textContent = "⏸️";
+        playPauseBtn.textContent = "⏸️"; // Cambia el icono a pausa
     } else {
         audio.pause();
-        playPauseBtn.textContent = "▶️";
+        playPauseBtn.textContent = "▶️"; // Cambia el icono a play
     }
 });
 
-// Avanzar a la siguiente canción
-nextBtn.addEventListener("click", () => {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
-    changeSong();
-});
-
-// Retroceder a la canción anterior
-prevBtn.addEventListener("click", () => {
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-    changeSong();
-});
-
-// Cambiar de canción
-function changeSong() {
-    audio.pause();
-    audio = new Audio(songs[currentSongIndex].src);
-    songTitleSpan.textContent = songs[currentSongIndex].title;
-    audio.play();
-    playPauseBtn.textContent = "⏸️";
-
-    // Actualizar duración
-    audio.addEventListener("loadedmetadata", () => {
-        durationSpan.textContent = formatTime(audio.duration);
-    });
-
-    // Escuchar eventos de tiempo para actualizar la barra de progreso
-    audio.addEventListener("timeupdate", updateProgressBar);
-}
+// Escuchar el evento "timeupdate" para actualizar la barra de progreso
+audio.addEventListener("timeupdate", updateProgressBar);
 
 // Permitir al usuario cambiar la posición de la canción
 progressBar.addEventListener("input", () => {
     audio.currentTime = (progressBar.value / 100) * audio.duration;
 });
 
+// Mostrar el título de la canción en la pantalla
+songTitleSpan.textContent = songs[currentSongIndex].title;
 
