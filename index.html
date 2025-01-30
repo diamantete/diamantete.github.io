@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Museo del Amor</title>
+    <title>Mi Reproductor de Música</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
-        <h1>🎵 Nuestro Museo del Amor 🎵</h1>
-    </header>
+    <div class="music-player">
+        <img src="cover.jpg" alt="Carátula" id="cover">
+        
+        <div class="song-info">
+            <h3 id="songTitle">The Way Things</h3>
+            <p id="artist">beabadoobee</p>
+        </div>
 
-   <div class="custom-music-player">
-    <button id="prev">⏮️</button>
-    <button id="playPause">▶️</button>
-    <button id="next">⏭️</button>
-    
-    <!-- Barra de progreso -->
-    <input type="range" id="progressBar" value="0" min="0" max="100">
+        <div class="controls">
+            <button id="prev">⏮️</button>
+            <button id="playPause">▶️</button>
+            <button id="next">⏭️</button>
+        </div>
 
-    <!-- Tiempo de la canción -->
-    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+        <input type="range" id="progressBar" value="0" min="0" max="100">
 
-    <!-- Título de la canción -->
-    <span id="songTitle">Canción 1</span>
-</div>
+        <div class="time-info">
+            <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
