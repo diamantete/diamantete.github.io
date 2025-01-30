@@ -4,29 +4,24 @@ body {
     text-align: center;
     background: linear-gradient(to right, #ff9a9e, #fad0c4);
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
-/* Estilo del encabezado */
-header {
-    padding: 20px;
-    font-size: 24px;
-    background: black;
-}
-
-/* Estilos para el reproductor personalizado */
+/* Estilos para el reproductor de música */
 .custom-music-player {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 400px;
+    width: 500px; /* Más ancho */
     height: 80px;
-    background: black;
+    background: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
     color: white;
     display: flex;
-    justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    justify-content: space-around;
+    border-radius: 15px; /* Bordes redondeados */
     padding: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -39,21 +34,36 @@ header {
     font-size: 24px;
     cursor: pointer;
     transition: 0.3s;
-    margin: 0 10px;
+    padding: 10px;
+    border-radius: 50%;
 }
 
 .custom-music-player button:hover {
-    color: #ffcc00;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Estilos para la barra de progreso */
 #progressBar {
-    width: 100px;
+    width: 50%;
+    height: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    appearance: none;
+    background: #ffcc00; /* Amarillo */
+}
+
+/* Personalizar el control de la barra de progreso */
+#progressBar::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
     cursor: pointer;
 }
 
-/* Estilos para el texto de la canción */
-#songTitle {
-    font-size: 16px;
-    margin-left: 10px;
+/* Estilos para el tiempo y el título de la canción */
+#currentTime, #duration, #songTitle {
+    font-size: 14px;
+    margin: 0 5px;
 }
