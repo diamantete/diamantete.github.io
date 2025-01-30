@@ -1,4 +1,4 @@
-const audio = new Audio("beabadoobee-the-way-things.mp3"); // Cargar la canción
+const audio = new Audio("beabadoobee the way things.mp3"); // Cargar la canción
 const playPauseBtn = document.getElementById("playPause");
 const progressBar = document.getElementById("progressBar");
 const currentTimeSpan = document.getElementById("currentTime");
