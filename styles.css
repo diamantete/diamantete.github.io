@@ -107,3 +107,31 @@ header {
     height: 100%;
     border: none; /* Elimina los bordes */
 }
+/* Estilos para el reproductor de Spotify más largo y sin bordes */
+.spotify-player {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px; /* Ajusta el tamaño del reproductor */
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none !important; /* Elimina cualquier fondo adicional */
+    border: none !important; /* Asegura que no haya bordes */
+    box-shadow: none !important; /* Elimina sombras */
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ajusta el iframe */
+.spotify-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none !important; /* Elimina cualquier borde interno */
+    box-shadow: none !important; /* Asegura que no haya sombras */
+    background: none !important;
+}
+
