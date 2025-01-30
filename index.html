@@ -12,19 +12,17 @@
         <h1>🎵 Nuestro Museo del Amor 🎵</h1>
     </header>
 
-    <!-- Reproductor de Spotify -->
-    <div class="spotify-player">
-        <iframe style="border-radius:12px" 
-    src="https://open.spotify.com/embed/playlist/0M6LvW3AdnY0VPlBuvJkB7" 
-    width="100%" height="152" frameBorder="0" 
-    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture">
-</iframe>
+   <div class="custom-music-player">
+    <button id="prev">⏮️</button>
+    <button id="playPause">▶️</button>
+    <button id="next">⏭️</button>
+    
+    <!-- Barra de progreso -->
+    <input type="range" id="progressBar" value="0" min="0" max="100">
 
-    </div>
+    <!-- Tiempo de la canción -->
+    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
 
-    <div id="lyrics-container">
-        <p id="lyrics">Letra de la canción aparecerá aquí...</p>
-    </div>
-
-</body>
-</html>
+    <!-- Título de la canción -->
+    <span id="songTitle">Canción 1</span>
+</div>
