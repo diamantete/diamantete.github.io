@@ -13,125 +13,47 @@ header {
     background: black;
 }
 
-/* Estilo del reproductor de música */
-.music-player {
+/* Estilos para el reproductor personalizado */
+.custom-music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 80px;
     background: black;
     color: white;
-    padding: 15px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilo de los botones de control */
-.music-player button {
+/* Estilo de los botones */
+.custom-music-player button {
     background: none;
     border: none;
     color: white;
     font-size: 24px;
     cursor: pointer;
     transition: 0.3s;
-}
-
-.music-player button:hover {
-    color: #ffcc00;
-}
-
-/* Contenedor de la letra */
-#lyrics-container {
-    margin-top: 20px;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Estilo de la letra de la canción */
-.lyric-line {
-    font-size: 20px;
-    color: white;
-    opacity: 0.5;
-    transition: opacity 0.3s;
-}
-
-/* Resalta la línea actual de la letra */
-.lyric-line.active {
-    opacity: 1;
-    font-weight: bold;
-    color: #ffcc00;
-}
-/* Barra de progreso */
-#progressBar {
-    width: 300px;
-    appearance: none;
-    height: 5px;
-    background: #ffcc00;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-}
-
-/* Cambia el color cuando el usuario la mueve */
-#progressBar::-webkit-slider-thumb {
-    appearance: none;
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-#currentTime, #duration {
-    font-size: 14px;
     margin: 0 10px;
-    color: white;
-}
-/* Estilos para el reproductor de Spotify más largo y sin bordes */
-.spotify-player {
-    position: fixed;
-    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px; /* Aumenta el ancho del reproductor */
-    height: 80px; /* Ajusta la altura */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* Ajusta el tamaño del iframe sin bordes */
-.spotify-player iframe {
-    width: 100%;
-    height: 100%;
-    border: none; /* Elimina los bordes */
-}
-/* Estilos para el reproductor de Spotify más largo y sin bordes */
-.spotify-player {
-    position: fixed;
-    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px; /* Ajusta el tamaño del reproductor */
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: none !important; /* Elimina cualquier fondo adicional */
-    border: none !important; /* Asegura que no haya bordes */
-    box-shadow: none !important; /* Elimina sombras */
-    outline: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+.custom-music-player button:hover {
+    color: #ffcc00;
 }
 
-/* Ajusta el iframe */
-.spotify-player iframe {
-    width: 100%;
-    height: 100%;
-    border: none !important; /* Elimina cualquier borde interno */
-    box-shadow: none !important; /* Asegura que no haya sombras */
-    background: none !important;
+/* Estilos para la barra de progreso */
+#progressBar {
+    width: 100px;
+    cursor: pointer;
 }
 
+/* Estilos para el texto de la canción */
+#songTitle {
+    font-size: 16px;
+    margin-left: 10px;
+}
