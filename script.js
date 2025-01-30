@@ -1,6 +1,7 @@
 // Definir la canción con su título y archivo MP3
 const songs = [
-    { title: "The Way Things - beabadoobee", src: "beabadoobee the way things.mp3" }
+    { title: "The Way Things - beabadoobee", src: "beabadoobee-the-way-things.mp3
+" }
 ];
 
 let currentSongIndex = 0;
