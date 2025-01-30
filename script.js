@@ -5,7 +5,10 @@ const songs = [
 ];
 
 let currentSongIndex = 0;
-let audio = new Audio(songs[currentSongIndex].src); // Cargar la canción
+let audio = new Audio();
+audio.src = songs[currentSongIndex].src;
+audio.preload = "auto"; // Precargar la canción
+
 
 // Obtener elementos del DOM
 const playPauseBtn = document.getElementById("playPause");
