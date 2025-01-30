@@ -13,11 +13,17 @@
     </header>
 
     <div class="music-player">
-        <button id="prev">⏮️</button>
-        <button id="playPause">▶️</button>
-        <button id="next">⏭️</button>
-        <span id="songTitle">Canción 1</span>
-    </div>
+    <button id="prev">⏮️</button>
+    <button id="playPause">▶️</button>
+    <button id="next">⏭️</button>
+
+    <!-- Barra de progreso -->
+    <input type="range" id="progressBar" value="0" min="0" max="100">
+    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+
+    <span id="songTitle">Canción 1</span>
+</div>
+
 
     <div id="lyrics-container">
         <p id="lyrics">Letra de la canción aparecerá aquí...</p>
