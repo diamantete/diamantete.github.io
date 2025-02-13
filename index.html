@@ -3,40 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Reproductor de Música</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sports Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .completed {
+            background-color: lightgreen;
+        }
+    </style>
 </head>
 <body>
+    <h1>Sports Tracker</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Día</th>
+                <th>Ejercicio</th>
+                <th>Natación</th>
+                <th>Ciclismo</th>
+                <th>Correr</th>
+            </tr>
+        </thead>
+        <tbody id="trackerBody">
+        </tbody>
+    </table>
 
-    <div class="music-player">
-        <img src="cover.jpg" alt="Carátula" id="cover">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const daysInMonth = new Date().getDate();
+            const trackerBody = document.getElementById("trackerBody");
+            const sports = ["Ejercicio", "Natación", "Ciclismo", "Correr"];
+            
+            for (let i = 1; i <= daysInMonth; i++) {
+                const row = document.createElement("tr");
+                const dayCell = document.createElement("td");
+                dayCell.textContent = i;
+                row.appendChild(dayCell);
+                
+                sports.forEach(sport => {
+                    const cell = document.createElement("td");
+                    const button = document.createElement("button");
+                    button.textContent = "✔";
+                    button.addEventListener("click", function() {
+                        cell.classList.toggle("completed");
+                        saveProgress();
+                    });
+                    cell.appendChild(button);
+                    row.appendChild(cell);
+                });
+                
+                trackerBody.appendChild(row);
+            }
+            
+            loadProgress();
+        });
         
-        <div class="song-info">
-            <h3 id="songTitle">The Way Things</h3>
-            <p id="artist">beabadoobee</p>
-        </div>
-
-        <div class="controls">
-    <button id="prev">⏮️</button>
-    <button id="playPause">▶️</button>
-    <button id="next">⏭️</button>
-</div>
-
-<!-- Barra de progreso -->
-<input type="range" id="progressBar" value="0" min="0" max="100">
-
-<!-- Control de volumen -->
-<div class="volume-control">
-    <span>🔊</span>
-    <input type="range" id="volumeBar" min="0" max="1" step="0.1" value="1">
-</div>
-
-<!-- Tiempo de la canción -->
-<div class="time-info">
-    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-</div>
-
-
-    <script src="script.js"></script>
+        function saveProgress() {
+            const data = [];
+            document.querySelectorAll("#trackerBody tr").forEach(row => {
+                const rowData = [];
+                row.querySelectorAll("td.completed").forEach((cell, index) => {
+                    rowData.push(index);
+                });
+                data.push(rowData);
+            });
+            localStorage.setItem("sportsTracker", JSON.stringify(data));
+        }
+        
+        function loadProgress() {
+            const data = JSON.parse(localStorage.getItem("sportsTracker")) || [];
+            document.querySelectorAll("#trackerBody tr").forEach((row, rowIndex) => {
+                if (data[rowIndex]) {
+                    row.querySelectorAll("td").forEach((cell, cellIndex) => {
+                        if (data[rowIndex].includes(cellIndex)) {
+                            cell.classList.add("completed");
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>
+
