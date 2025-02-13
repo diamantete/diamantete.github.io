@@ -3,98 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Tracker</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
-        .completed {
-            background-color: lightgreen;
-        }
-    </style>
+    <title>Registro de Hábitos</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Sports Tracker</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Día</th>
-                <th>Ejercicio</th>
-                <th>Natación</th>
-                <th>Ciclismo</th>
-                <th>Correr</th>
-            </tr>
-        </thead>
-        <tbody id="trackerBody">
-        </tbody>
-    </table>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const daysInMonth = new Date().getDate();
-            const trackerBody = document.getElementById("trackerBody");
-            const sports = ["Ejercicio", "Natación", "Ciclismo", "Correr"];
-            
-            for (let i = 1; i <= daysInMonth; i++) {
-                const row = document.createElement("tr");
-                const dayCell = document.createElement("td");
-                dayCell.textContent = i;
-                row.appendChild(dayCell);
-                
-                sports.forEach(sport => {
-                    const cell = document.createElement("td");
-                    const button = document.createElement("button");
-                    button.textContent = "✔";
-                    button.addEventListener("click", function() {
-                        cell.classList.toggle("completed");
-                        saveProgress();
-                    });
-                    cell.appendChild(button);
-                    row.appendChild(cell);
-                });
-                
-                trackerBody.appendChild(row);
-            }
-            
-            loadProgress();
-        });
-        
-        function saveProgress() {
-            const data = [];
-            document.querySelectorAll("#trackerBody tr").forEach(row => {
-                const rowData = [];
-                row.querySelectorAll("td.completed").forEach((cell, index) => {
-                    rowData.push(index);
-                });
-                data.push(rowData);
-            });
-            localStorage.setItem("sportsTracker", JSON.stringify(data));
-        }
-        
-        function loadProgress() {
-            const data = JSON.parse(localStorage.getItem("sportsTracker")) || [];
-            document.querySelectorAll("#trackerBody tr").forEach((row, rowIndex) => {
-                if (data[rowIndex]) {
-                    row.querySelectorAll("td").forEach((cell, cellIndex) => {
-                        if (data[rowIndex].includes(cellIndex)) {
-                            cell.classList.add("completed");
-                        }
-                    });
-                }
-            });
-        }
-    </script>
+    <header>
+        <h1>Registro de Hábitos</h1>
+    </header>
+    <main>
+        <section id="habit-form">
+            <h2>Agregar Nuevo Hábito</h2>
+            <form id="new-habit-form">
+                <label for="habit-name">Nombre del Hábito:</label>
+                <input type="text" id="habit-name" required>
+                <label for="habit-frequency">Frecuencia (días por semana):</label>
+                <input type="number" id="habit-frequency" min="1" max="7" required>
+                <button type="submit">Agregar Hábito</button>
+            </form>
+        </section>
+        <section id="habit-list">
+            <h2>Mis Hábitos</h2>
+            <ul id="habits">
+                <!-- Lista de hábitos -->
+            </ul>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
 </body>
 </html>
-
